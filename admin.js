@@ -1,17 +1,12 @@
-const { Kafka } = require("kafkajs");
-
-// creating instance for kafka
-const kafka = new Kafka();
-
-const admin = kafka.admin();
+const {client} = require('./client')
 
 const init = async () => {
     console.log('connecting admin...')
-    await admin.connect()
+    await client.connect()
     console.log('connected with admin\n')
 
     console.log('creating topic rider-updates...')
-    await admin.createTopics({
+    await client.createTopics({
         topics: [
             {
                 topic: 'rider-updates',
@@ -22,7 +17,7 @@ const init = async () => {
     console.log('topic created\n')
 
     console.log('disconnecting admin...')
-    await admin.disconnect()
+    await client.disconnect()
     console.log('disconnected with admin\n')
 }
 
