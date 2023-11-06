@@ -1,8 +1,9 @@
 const {client} = require('./client')
 
-const admin = client.admin();
 
 const init = async () => {
+    const admin = client.admin();
+    
     console.log('connecting admin...')
     await admin.connect()
     console.log('connected with admin\n')
